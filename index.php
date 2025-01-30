@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 }
 
 // Query untuk mendapatkan daftar file
-$sql = "SELECT id, file_name, file_path FROM images ORDER BY id DESC";
+$sql = "SELECT * FROM images ORDER BY id DESC";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -23,6 +23,7 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $files[] = [
             'id' => $row['id'],
+            'name' => $row['name'],
             'file_name' => $row['file_name'],
             'file_path' => $row['file_path']
         ];
